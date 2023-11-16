@@ -6,6 +6,9 @@ import { User } from '../user/user.model';
 
 @Injectable()
 export class EtudiantService {
+    findByEmail(email: any, password: any): Etudiant | PromiseLike<Etudiant> {
+        throw new Error('Method not implemented.');
+    }
     getSingleProduct(prodId: string) {
         throw new Error('Method not implemented.');
     }
@@ -41,6 +44,11 @@ export class EtudiantService {
         console.error(error);
         throw new Error('Error fetching etudiants');
       }
+    }
+    async findOne(username: string): Promise<Etudiant | undefined> {
+      const etudiants = await this.etudiantModel.find().populate('user').exec();
+      const etudiant = etudiants.find(etudiant => etudiant.user.email === username);
+      return etudiant;
     }
     async getSingleEtudiant(Id: string) {
         const etudiant = await this.findEtudiant(Id);

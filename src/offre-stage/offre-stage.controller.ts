@@ -8,6 +8,7 @@ export class OffreStageController {
     constructor(private readonly offreStageService: OffreStageService) { }
     @Post()
     async addOffreStage(
+        
         @Body('titre') titre: string,
         @Body('description') description: string,
         @Body('domaine') domaine: string,

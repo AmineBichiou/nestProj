@@ -41,6 +41,13 @@ export class EntrepriseService {
           
         };
       }
+      async findOne(username: string): Promise<Entreprise | undefined> {
+        const entreprises = await this.entrepriseModel.find().populate('user').exec();
+        const entreprise = entreprises.find(entreprise => entreprise.user.email === username);
+        return entreprise;
+       
+    }
+    
     async updateEntreprise(Id: string, localisation: string, secteur: string){
         const updatedEntreprise = await this.findEntreprise(Id);
         if (localisation) {

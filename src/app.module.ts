@@ -11,13 +11,14 @@ import { OffreStageModule } from './offre-stage/offre-stage.module';
 import { AuthModule } from './auth/auth.module';
 import * as cors from 'cors';
 
+
 @Module({
   imports: [
     MongooseModule.forRoot("mongodb+srv://aminebichiou2:7Uhs80FIwBAhC690@amine.qukftes.mongodb.net/nextjsapi"),
     StudentModule,
-    UserModule,
     EtudiantModule,
     EntrepriseModule,
+    UserModule,
     OffreStageModule,
     AuthModule
   ],
